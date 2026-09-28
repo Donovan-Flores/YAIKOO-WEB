@@ -303,26 +303,44 @@
             }, 300);
         }
 
-        // Exportar a PDF usando html2pdf
-        function downloadPDF() {
-            const element = document.getElementById('export-zone');
-            const opt = {
-                margin:       10,
-                filename:     `YAIKOO_Reporte_${tests[currentCategory].title.replace(/\s+/g, '_')}.pdf`,
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
+    // Exportar a PDF Optimizado para Móviles
+    function downloadPDF(event) {
+        const btn = event.currentTarget;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "⏳ Generando PDF...";
+        btn.disabled = true;
 
-            // Notificación visual de carga
-            const btn = event.currentTarget;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "⏳ Generando tu PDF...";
-            
+        const element = document.getElementById('export-zone');
+
+        // Opciones de configuración optimizadas para móviles
+        const opt = {
+            margin:       [10, 10, 10, 10], // top, left, bottom, right (mm)
+            filename:     `Reporte_YAIKOO_${currentCategory}.pdf`,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { 
+                scale: 2, 
+                useCORS: true,
+                allowTaint: true,
+                logging: false,
+                scrollX: 0,
+                scrollY: 0
+            },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // Pequeño retardo para asegurar procesamiento de canvas en navegadores móviles
+        setTimeout(() => {
             html2pdf().set(opt).from(element).save().then(() => {
                 btn.innerHTML = originalText;
+                btn.disabled = false;
+            }).catch(err => {
+                console.error("Error al generar PDF:", err);
+                alert("No se pudo generar el PDF automáticamente. Puedes tomar una captura de pantalla a tu reporte.");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
             });
-        }
-    </script>
+        }, 300);
+    }
+</script>
 </body>
 </html>

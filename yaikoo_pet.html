@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mascota Virtual YAIKOO 🐱✨</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Font: Nunito -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa 0%, #fce4ec 50%, #fffde7 100%);
+      min-height: 100vh;
+    }
+
+    /* Animación flotante de YAIKOO entre nubes */
+    @keyframes floatPet {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1.5deg); }
+    }
+
+    /* Animación para brillos y destellos */
+    @keyframes pulseSparkle {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Animación de reacción al hacer clic/cuidar */
+    @keyframes happyBounce {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.15) translateY(-15px); }
+      60% { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+
+    .animate-float {
+      animation: floatPet 4s ease-in-out infinite;
+    }
+
+    .animate-bounce-custom {
+      animation: happyBounce 0.6s ease-in-out;
+    }
+
+    .sparkle {
+      animation: pulseSparkle 2s ease-in-out infinite;
+    }
+
+    /* Sombras suaves estilo pastel */
+    .pastel-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 30px rgba(167, 228, 232, 0.3);
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center p-4 min-h-screen relative overflow-hidden">
+
+  <!-- Elementos decorativos de fondo (Nubes y Destellos Místicos) -->
+  <div class="absolute top-10 left-10 text-cyan-200 text-6xl sparkle opacity-60"><i class="fa-solid fa-cloud"></i></div>
+  <div class="absolute top-20 right-16 text-pink-200 text-7xl sparkle opacity-60" style="animation-delay: 1s;"><i class="fa-solid fa-cloud"></i></div>
+  <div class="absolute bottom-12 left-1/4 text-amber-200 text-4xl sparkle"><i class="fa-solid fa-sparkles"></i></div>
+  <div class="absolute top-1/3 right-10 text-cyan-300 text-3xl sparkle"><i class="fa-solid fa-star"></i></div>
+
+  <!-- Tarjeta Principal de YAIKOO -->
+  <div class="pastel-card rounded-3xl p-6 md:p-8 max-w-md w-full border border-white/60 text-gray-700 relative z-10 flex flex-col items-center">
+
+    <!-- Encabezado -->
+    <div class="w-full flex justify-between items-center mb-4 border-b border-pink-100 pb-3">
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+        <h1 class="font-bold text-xl text-teal-700">YAIKOO Virtual</h1>
+      </div>
+      <span id="pet-mood-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-pink-100 text-pink-600">
+        ✨ Muy Feliz
+      </span>
+    </div>
+
+    <!-- Globo de Diálogo de YAIKOO -->
+    <div class="relative w-full mb-2">
+      <div id="speech-bubble" class="bg-white border-2 border-teal-200 rounded-2xl p-3 text-center text-sm font-semibold text-teal-800 shadow-sm transition-all duration-300">
+        "¡Hola! Soy YAIKOO. ¡Qué alegría estar contigo hoy! ✨"
+      </div>
+      <!-- Pico del globo -->
+      <div class="w-4 h-4 bg-white border-b-2 border-r-2 border-teal-200 rotate-45 mx-auto -mt-2"></div>
+    </div>
+
+    <!-- Escenario de la Mascota (Imagen de YAIKOO) -->
+    <div class="relative my-4 cursor-pointer group" onclick="petYaikoo()">
+      <div class="absolute -top-4 -right-4 text-pink-400 text-2xl opacity-0 group-hover:opacity-100 transition-opacity">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <img id="yaikoo-img" 
+           src="yaikoo.jpeg" 
+           alt="YAIKOO Mascota Virtual" 
+           class="w-56 h-56 object-contain rounded-2xl animate-float drop-shadow-xl transition-all"
+           onerror="this.src='https://via.placeholder.com/220/a7e4e8/333333?text=YAIKOO+Mascota'">
+    </div>
+
+    <!-- Indicadores de Necesidades / Estado -->
+    <div class="w-full space-y-3 my-2">
+
+      <!-- Hambre -->
+      <div>
+        <div class="flex justify-between text-xs font-bold mb-1 text-slate-600">
+          <span><i class="fa-solid fa-utensils text-amber-400 mr-1"></i> Alimentación</span>
+          <span id="val-hunger">80%</span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+          <div id="bar-hunger" class="bg-amber-400 h-full rounded-full transition-all duration-500" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <!-- Felicidad -->
+      <div>
+        <div class="flex justify-between text-xs font-bold mb-1 text-slate-600">
+          <span><i class="fa-solid fa-heart text-pink-400 mr-1"></i> Felicidad / Afecto</span>
+          <span id="val-happiness">90%</span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+          <div id="bar-happiness" class="bg-pink-400 h-full rounded-full transition-all duration-500" style="width: 90%;"></div>
+        </div>
+      </div>
+
+      <!-- Energía -->
+      <div>
+        <div class="flex justify-between text-xs font-bold mb-1 text-slate-600">
+          <span><i class="fa-solid fa-bolt text-cyan-500 mr-1"></i> Energía</span>
+          <span id="val-energy">75%</span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+          <div id="bar-energy" class="bg-cyan-400 h-full rounded-full transition-all duration-500" style="width: 75%;"></div>
+        </div>
+      </div>
+
+      <!-- Calma Emocional -->
+      <div>
+        <div class="flex justify-between text-xs font-bold mb-1 text-slate-600">
+          <span><i class="fa-solid fa-spa text-emerald-400 mr-1"></i> Calma Emocional</span>
+          <span id="val-calm">85%</span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+          <div id="bar-calm" class="bg-emerald-400 h-full rounded-full transition-all duration-500" style="width: 85%;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Panel de Acciones (Botones de Cuidado) -->
+    <div class="grid grid-cols-2 gap-3 w-full mt-4">
+      <button onclick="feedYaikoo()" class="flex items-center justify-center gap-2 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold py-2.5 px-3 rounded-2xl transition shadow-sm active:scale-95 text-sm">
+        <i class="fa-solid fa-cookie-bite text-amber-500"></i> Alimentar
+      </button>
+
+      <button onclick="playYaikoo()" class="flex items-center justify-center gap-2 bg-pink-100 hover:bg-pink-200 text-pink-800 font-bold py-2.5 px-3 rounded-2xl transition shadow-sm active:scale-95 text-sm">
+        <i class="fa-solid fa-wand-magic-sparkles text-pink-500"></i> Jugar
+      </button>
+
+      <button onclick="meditateYaikoo()" class="flex items-center justify-center gap-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-bold py-2.5 px-3 rounded-2xl transition shadow-sm active:scale-95 text-sm">
+        <i class="fa-solid fa-om text-emerald-500"></i> Meditar
+      </button>
+
+      <button onclick="restYaikoo()" class="flex items-center justify-center gap-2 bg-cyan-100 hover:bg-cyan-200 text-cyan-800 font-bold py-2.5 px-3 rounded-2xl transition shadow-sm active:scale-95 text-sm">
+        <i class="fa-solid fa-moon text-cyan-500"></i> Descansar
+      </button>
+    </div>
+
+    <!-- Pie de página con control de reinicio -->
+    <div class="mt-5 text-center">
+      <button onclick="resetStats()" class="text-xs text-slate-400 hover:text-slate-600 underline">
+        Restablecer estados de prueba
+      </button>
+    </div>
+
+  </div>
+
+  <!-- JavaScript del Bucle de Juego e Interacciones -->
+  <script>
+    // Estado inicial de la Mascota
+    let petState = {
+      hunger: 80,
+      happiness: 90,
+      energy: 75,
+      calm: 85
+    };
+
+    // Frases empáticas de YAIKOO
+    const dialogues = {
+      feed: [
+        "¡Mmm, qué delicioso! Muchas gracias 🧁✨",
+        "¡Mi pancita está feliz y llena!",
+        "¡Gracias por alimentarme con tanto amor!"
+      ],
+      play: [
+        "¡Qué divertido! ¡Me encantan los destellos mágicos! ✨",
+        "¡Jeje, eres mi persona favorita!",
+        "¡Juagemos un rato más!"
+      ],
+      meditate: [
+        "Inhala profundo... exhala... Me siento en mucha paz 🧘‍♂️🌸",
+        "La tranquilidad está dentro de nosotros ✨",
+        "Gracias por darte un momento de calma conmigo."
+      ],
+      rest: [
+        "Un buen descanso recarga nuestro corazón 🌙⭐",
+        "Voy a tomar una pequeña siesta en las nubes...",
+        "Zzz... Descansar también es avanzar."
+      ],
+      pet: [
+        "¡Mmm! ¡Me encantan los mimos! 🐾❤️",
+        "¡Te envío un abrazo lleno de luz pastel!",
+        "¡Siempre estaré aquí para acompañarte!"
+      ],
+      lowHunger: "Tengo un poco de hambre... ¿Comemos algo rico? 🍎",
+      lowEnergy: "Me siento un poco cansado... ¿Descansamos un ratito? 🌙",
+      lowCalm: "Siento un poco de inquietud... ¿Hacemos una pausa juntos? 🌸"
+    };
+
+    // Cargar datos guardados si existen
+    function loadSavedState() {
+      const saved = localStorage.getItem('yaikoo_pet_state');
+      if (saved) {
+        petState = JSON.parse(saved);
+      }
+      updateUI();
+    }
+
+    // Guardar estado actual
+    function saveState() {
+      localStorage.setItem('yaikoo_pet_state', JSON.stringify(petState));
+    }
+
+    // Actualizar la Interfaz de Usuario
+    function updateUI() {
+      // Limitar valores entre 0 y 100
+      for (let key in petState) {
+        petState[key] = Math.max(0, Math.min(100, petState[key]));
+      }
+
+      // Actualizar barras y textos
+      document.getElementById('bar-hunger').style.width = petState.hunger + '%';
+      document.getElementById('val-hunger').innerText = Math.round(petState.hunger) + '%';
+
+      document.getElementById('bar-happiness').style.width = petState.happiness + '%';
+      document.getElementById('val-happiness').innerText = Math.round(petState.happiness) + '%';
+
+      document.getElementById('bar-energy').style.width = petState.energy + '%';
+      document.getElementById('val-energy').innerText = Math.round(petState.energy) + '%';
+
+      document.getElementById('bar-calm').style.width = petState.calm + '%';
+      document.getElementById('val-calm').innerText = Math.round(petState.calm) + '%';
+
+      // Evaluar Estado de Ánimo General
+      const average = (petState.hunger + petState.happiness + petState.energy + petState.calm) / 4;
+      const moodBadge = document.getElementById('pet-mood-badge');
+
+      if (average > 75) {
+        moodBadge.className = "px-3 py-1 rounded-full text-xs font-bold bg-pink-100 text-pink-600";
+        moodBadge.innerText = "✨ Muy Feliz";
+      } else if (average > 40) {
+        moodBadge.className = "px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700";
+        moodBadge.innerText = "🙂 Tranquilo";
+      } else {
+        moodBadge.className = "px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700";
+        moodBadge.innerText = "🥺 Necesita Cuidado";
+      }
+
+      saveState();
+    }
+
+    // Animación de Reacción
+    function triggerBounce() {
+      const img = document.getElementById('yaikoo-img');
+      img.classList.remove('animate-float');
+      img.classList.add('animate-bounce-custom');
+      
+      setTimeout(() => {
+        img.classList.remove('animate-bounce-custom');
+        img.classList.add('animate-float');
+      }, 600);
+    }
+
+    // Mostrar Diálogo
+    function say(text) {
+      const bubble = document.getElementById('speech-bubble');
+      bubble.style.opacity = '0';
+      setTimeout(() => {
+        bubble.innerText = text;
+        bubble.style.opacity = '1';
+      }, 150);
+    }
+
+    // Funciones de Acción
+    function feedYaikoo() {
+      petState.hunger += 20;
+      petState.energy += 5;
+      triggerBounce();
+      say(dialogues.feed[Math.floor(Math.random() * dialogues.feed.length)]);
+      updateUI();
+    }
+
+    function playYaikoo() {
+      if (petState.energy < 15) {
+        say("Estoy muy cansado para jugar ahora... Necesito descansar 😴");
+        return;
+      }
+      petState.happiness += 20;
+      petState.energy -= 10;
+      petState.hunger -= 5;
+      triggerBounce();
+      say(dialogues.play[Math.floor(Math.random() * dialogues.play.length)]);
+      updateUI();
+    }
+
+    function meditateYaikoo() {
+      petState.calm += 25;
+      petState.happiness += 10;
+      triggerBounce();
+      say(dialogues.meditate[Math.floor(Math.random() * dialogues.meditate.length)]);
+      updateUI();
+    }
+
+    function restYaikoo() {
+      petState.energy += 30;
+      petState.calm += 10;
+      petState.hunger -= 10;
+      triggerBounce();
+      say(dialogues.rest[Math.floor(Math.random() * dialogues.rest.length)]);
+      updateUI();
+    }
+
+    function petYaikoo() {
+      petState.happiness += 10;
+      petState.calm += 5;
+      triggerBounce();
+      say(dialogues.pet[Math.floor(Math.random() * dialogues.pet.length)]);
+      updateUI();
+    }
+
+    function resetStats() {
+      petState = { hunger: 80, happiness: 90, energy: 75, calm: 85 };
+      say("¡Hola de nuevo! Todo listo para seguir cuidando de mi ✨");
+      updateUI();
+    }
+
+    // BUCLE DE TIEMPO (Gameloop)
+    // Reduce las estadísticas paulatinamente cada 5 segundos
+    setInterval(() => {
+      petState.hunger -= 1.5;
+      petState.happiness -= 1.0;
+      petState.energy -= 0.8;
+      petState.calm -= 0.5;
+
+      // Advertencias automáticas si un nivel baja demasiado
+      if (petState.hunger < 30 && Math.random() < 0.3) {
+        say(dialogues.lowHunger);
+      } else if (petState.energy < 25 && Math.random() < 0.3) {
+        say(dialogues.lowEnergy);
+      } else if (petState.calm < 30 && Math.random() < 0.3) {
+        say(dialogues.lowCalm);
+      }
+
+      updateUI();
+    }, 5000);
+
+    // Inicializar al cargar
+    window.onload = loadSavedState;
+  </script>
+</body>
+</html>

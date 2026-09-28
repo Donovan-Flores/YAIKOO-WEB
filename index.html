@@ -10,363 +10,363 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <!-- Librería para exportar a PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<style>
-    body {
-        font-family: 'Nunito', sans-serif;
-        background: linear-gradient(135deg, #e0f7fa 0%, #ffcce0 100%);
-        min-height: 100vh;
-        color: #2d3748;
-    }
-    .btn-pastel-blue {
-        background-color: #a7e4e8;
-        color: #1a4c54;
-        transition: all 0.3s ease;
-    }
-    .btn-pastel-blue:hover {
-        background-color: #8cd2d6;
-        transform: translateY(-2px);
-    }
-    .btn-pastel-pink {
-        background-color: #ffb6c1;
-        color: #5c1b26;
-        transition: all 0.3s ease;
-    }
-    .btn-pastel-pink:hover {
-        background-color: #f79eb0;
-        transform: translateY(-2px);
-    }
-    .btn-pastel-yellow {
-        background-color: #fceea7;
-        color: #5e5413;
-        transition: all 0.3s ease;
-    }
-    .btn-pastel-yellow:hover {
-        background-color: #f5e489;
-        transform: translateY(-2px);
-    }
-    .fade-in {
-        animation: fadeIn 0.4s ease-in-out;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulseGlow {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.02); }
-    }
-    .pulse-card {
-        animation: pulseGlow 3s ease-in-out infinite;
-    }
-</style>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffcce0 100%);
+            color: #2d3748;
+        }
+        .btn-pastel-blue {
+            background-color: #a7e4e8;
+            color: #1a4c54;
+            transition: all 0.3s ease;
+        }
+        .btn-pastel-blue:hover {
+            background-color: #8cd2d6;
+            transform: translateY(-2px);
+        }
+        .btn-pastel-pink {
+            background-color: #ffb6c1;
+            color: #5c1b26;
+            transition: all 0.3s ease;
+        }
+        .btn-pastel-pink:hover {
+            background-color: #f79eb0;
+            transform: translateY(-2px);
+        }
+        .btn-pastel-yellow {
+            background-color: #fceea7;
+            color: #5e5413;
+            transition: all 0.3s ease;
+        }
+        .btn-pastel-yellow:hover {
+            background-color: #f5e489;
+            transform: translateY(-2px);
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .pulse-card {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6">
 
-
-<!-- Contenedor Principal -->
-<div id="app-container" class="bg-white rounded-3xl shadow-xl w-full max-w-2xl overflow-hidden fade-in my-6">
-    
-    <!-- Header -->
-    <div class="text-center p-6 bg-white border-b border-gray-100">
-        <img src="images/logo.png" alt="YAIKOO Logo" class="h-24 mx-auto object-contain mb-2" onerror="this.src='https://placehold.co/300x150/a7e4e8/1a4c54?text=YAIKOO&font=Montserrat'">
-        <p class="text-gray-500 text-sm">Tu espacio seguro para la salud mental</p>
-    </div>
-
-    <!-- VISTA 1: Inicio / Selección de Test -->
-    <div id="view-home" class="p-8">
-        <h2 class="text-2xl font-bold text-center mb-2 text-gray-700">¡Hola! Soy YAIKOO 🐾</h2>
-        <p class="text-center mb-6 text-gray-600">Estoy aquí para escucharte. Elige una de nuestras opciones para comenzar a cuidar de tu bienestar.</p>
+    <!-- Contenedor Principal Centrado -->
+    <div id="app-container" class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden fade-in my-auto border border-white/60">
         
-        <!-- TARJETA DESTACADA: MASCOTA VIRTUAL YAIKOO -->
-        <div class="mb-8 p-6 bg-gradient-to-r from-teal-50 via-pink-50 to-amber-50 rounded-3xl border-2 border-[#a7e4e8] shadow-sm flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-left pulse-card">
-            <div class="flex flex-col md:flex-row items-center gap-4">
-                <img src="images/yaikooNB.png" alt="YAIKOO Mascota" class="h-20 w-20 object-contain drop-shadow-md" onerror="this.src='https://placehold.co/100x100/a7e4e8/1a4c54?text=YAIKOO'">
-                <div>
-                    <span class="inline-block bg-[#ffb6c1] text-[#5c1b26] text-xs px-3 py-1 rounded-full font-extrabold tracking-wider uppercase mb-1">
-                        ✨ ¡Nueva Experiencia!
-                    </span>
-                    <h3 class="text-xl font-bold text-[#1a4c54]">Mascota Virtual YAIKOO</h3>
-                    <p class="text-sm text-gray-600 mt-1">¿Quieres conocer, jugar, alimentar y cuidar a YAIKOO? ¡Entra ahora a su espacio virtual!</p>
+        <!-- Header -->
+        <div class="text-center p-6 bg-white border-b border-gray-100">
+            <img src="images/logo.png" alt="YAIKOO Logo" class="h-24 mx-auto object-contain mb-2" onerror="this.src='https://placehold.co/300x150/a7e4e8/1a4c54?text=YAIKOO&font=Montserrat'">
+            <p class="text-gray-500 text-sm">Tu espacio seguro para la salud mental</p>
+        </div>
+
+        <!-- VISTA 1: Inicio / Selección de Test -->
+        <div id="view-home" class="p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-center mb-2 text-gray-700">¡Hola! Soy YAIKOO 🐾</h2>
+            <p class="text-center mb-6 text-gray-600">Estoy aquí para escucharte. Elige una de nuestras opciones para comenzar a cuidar de tu bienestar.</p>
+            
+            <!-- TARJETA DESTACADA: MASCOTA VIRTUAL YAIKOO -->
+            <div class="mb-8 p-6 bg-gradient-to-r from-teal-50 via-pink-50 to-amber-50 rounded-3xl border-2 border-[#a7e4e8] shadow-sm flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-left pulse-card">
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <img src="images/yaikooNB.png" alt="YAIKOO Mascota" class="h-20 w-20 object-contain drop-shadow-md" onerror="this.src='https://placehold.co/100x100/a7e4e8/1a4c54?text=YAIKOO'">
+                    <div>
+                        <span class="inline-block bg-[#ffb6c1] text-[#5c1b26] text-xs px-3 py-1 rounded-full font-extrabold tracking-wider uppercase mb-1">
+                            ✨ ¡Nueva Experiencia!
+                        </span>
+                        <h3 class="text-xl font-bold text-[#1a4c54]">Mascota Virtual YAIKOO</h3>
+                        <p class="text-sm text-gray-600 mt-1">¿Quieres conocer, jugar, alimentar y cuidar a YAIKOO? ¡Entra ahora a su espacio virtual!</p>
+                    </div>
+                </div>
+                <a href="https://yaikoo-pet.vercel.app" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto btn-pastel-pink px-6 py-3.5 rounded-2xl font-extrabold text-base flex items-center justify-center gap-2 shadow-md hover:no-underline whitespace-nowrap">
+                    🎮 Ir a Cuidar a YAIKOO 🐾
+                </a>
+            </div>
+
+            <div class="border-t border-gray-100 pt-6">
+                <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">O realiza un chequeo emocional rápido:</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button onclick="startTest('ansiedad')" class="btn-pastel-blue p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm">
+                        🌪️ Ansiedad y Estrés
+                    </button>
+                    <button onclick="startTest('depresion')" class="btn-pastel-pink p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm">
+                        🌧️ Ánimo y Depresión
+                    </button>
+                    <button onclick="startTest('digital')" class="btn-pastel-yellow p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm">
+                        📱 Agotamiento Digital
+                    </button>
+                    <button onclick="startTest('sueno')" class="btn-pastel-blue p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm">
+                        💤 Calidad del Sueño
+                    </button>
+                    <button onclick="startTest('aislamiento')" class="btn-pastel-pink p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm md:col-span-2">
+                        🤝 Conexión Social
+                    </button>
                 </div>
             </div>
-            <a href="https://yaikoo-pet.vercel.app" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto btn-pastel-pink px-6 py-3.5 rounded-2xl font-extrabold text-base flex items-center justify-center gap-2 shadow-md hover:no-underline whitespace-nowrap">
-                🎮 Ir a Cuidar a YAIKOO 🐾
-            </a>
+
+            <p class="text-xs text-center text-gray-400 mt-8">*Recuerda: YAIKOO es un apoyo emocional, no un sustituto de terapia médica o psicológica profesional.</p>
         </div>
 
-        <div class="border-t border-gray-100 pt-6">
-            <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">O realiza un chequeo emocional rápido:</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button onclick="startTest('ansiedad')" class="btn-pastel-blue p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm">
-                    🌪️ Ansiedad y Estrés
-                </button>
-                <button onclick="startTest('depresion')" class="btn-pastel-pink p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm">
-                    🌧️ Ánimo y Depresión
-                </button>
-                <button onclick="startTest('digital')" class="btn-pastel-yellow p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm">
-                    📱 Agotamiento Digital
-                </button>
-                <button onclick="startTest('sueno')" class="btn-pastel-blue p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm">
-                    💤 Calidad del Sueño
-                </button>
-                <button onclick="startTest('aislamiento')" class="btn-pastel-pink p-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 shadow-sm md:col-span-2">
-                    🤝 Conexión Social
-                </button>
-            </div>
-        </div>
-
-        <p class="text-xs text-center text-gray-400 mt-8">*Recuerda: YAIKOO es un apoyo emocional, no un sustituto de terapia médica o psicológica profesional.</p>
-    </div>
-
-    <!-- VISTA 2: Cuestionario -->
-    <div id="view-test" class="p-8 hidden">
-        <div class="flex justify-between items-center mb-6">
-            <button onclick="goHome()" class="text-gray-400 hover:text-gray-700 font-bold text-xl">&larr; Volver</button>
-            <span id="test-title" class="font-bold text-lg text-[#1a4c54] bg-[#a7e4e8] px-4 py-1 rounded-full">Tema</span>
-        </div>
-        
-        <div class="mb-8">
-            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
-                <div id="progress-bar" class="bg-[#a7e4e8] h-2.5 rounded-full transition-all duration-300" style="width: 20%"></div>
+        <!-- VISTA 2: Cuestionario -->
+        <div id="view-test" class="p-6 sm:p-8 hidden">
+            <div class="flex justify-between items-center mb-6">
+                <button onclick="goHome()" class="text-gray-400 hover:text-gray-700 font-bold text-xl">&larr; Volver</button>
+                <span id="test-title" class="font-bold text-lg text-[#1a4c54] bg-[#a7e4e8] px-4 py-1 rounded-full">Tema</span>
             </div>
             
-            <h3 id="question-text" class="text-xl font-bold text-center text-gray-700 mb-8 min-h-[60px]">¿Pregunta?</h3>
-            
-            <div class="flex flex-col gap-3">
-                <button onclick="answerQuestion(0)" class="w-full bg-gray-50 hover:bg-gray-100 border-2 border-gray-200 text-gray-700 p-4 rounded-xl font-semibold transition-colors">
-                    Casi nunca
-                </button>
-                <button onclick="answerQuestion(1)" class="w-full bg-gray-50 hover:bg-gray-100 border-2 border-gray-200 text-gray-700 p-4 rounded-xl font-semibold transition-colors">
-                    A veces 
-                </button>
-                <button onclick="answerQuestion(2)" class="w-full bg-gray-50 hover:bg-gray-100 border-2 border-gray-200 text-gray-700 p-4 rounded-xl font-semibold transition-colors">
-                    Casi siempre 
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- VISTA 3: Resultados (Para Exportar) -->
-    <div id="view-results" class="p-8 hidden">
-        <!-- Zona de exportación -->
-        <div id="export-zone" class="bg-white p-6 rounded-3xl border-2 border-[#a7e4e8]">
-            <div class="text-center mb-6">
-                <img src="images/yaikooNB.png" alt="YAIKOO Face" class="h-20 mx-auto object-contain mb-4" onerror="this.src='https://placehold.co/100x100/a7e4e8/1a4c54?text=Y'">
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">Tu Reporte YAIKOO</h2>
-                <p id="result-date" class="text-sm text-gray-500"></p>
-            </div>
-
-            <div class="bg-gray-50 rounded-2xl p-6 mb-6">
-                <h3 id="result-category" class="font-bold text-[#1a4c54] uppercase tracking-wider text-sm mb-2">Categoría evaluada</h3>
-                <div class="text-4xl font-extrabold text-[#1a4c54] mb-4" id="result-score">0/10</div>
-                <div id="yaikoo-message" class="text-gray-700 text-lg leading-relaxed italic border-l-4 border-[#ffb6c1] pl-4">
-                    "Mensaje de YAIKOO"
+            <div class="mb-8">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                    <div id="progress-bar" class="bg-[#a7e4e8] h-2.5 rounded-full transition-all duration-300" style="width: 20%"></div>
+                </div>
+                
+                <h3 id="question-text" class="text-xl font-bold text-center text-gray-700 mb-8 min-h-[60px]">¿Pregunta?</h3>
+                
+                <div class="flex flex-col gap-3">
+                    <button onclick="answerQuestion(0)" class="w-full bg-gray-50 hover:bg-gray-100 border-2 border-gray-200 text-gray-700 p-4 rounded-xl font-semibold transition-colors">
+                        Casi nunca
+                    </button>
+                    <button onclick="answerQuestion(1)" class="w-full bg-gray-50 hover:bg-gray-100 border-2 border-gray-200 text-gray-700 p-4 rounded-xl font-semibold transition-colors">
+                        A veces 
+                    </button>
+                    <button onclick="answerQuestion(2)" class="w-full bg-gray-50 hover:bg-gray-100 border-2 border-gray-200 text-gray-700 p-4 rounded-xl font-semibold transition-colors">
+                        Casi siempre 
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- Botones de Acción -->
-        <div class="mt-6 flex flex-col gap-2.5">
-            <button id="btn-download-pdf" onclick="downloadPDF(event)" class="w-full btn-pastel-blue p-3.5 rounded-xl font-bold text-base flex items-center justify-center gap-2 shadow-sm">
-                📄 Descargar Resultados (PDF)
-            </button>
-            <button class="w-full bg-gray-100 text-gray-400 p-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 cursor-not-allowed" disabled title="Próximamente">
-                💬 Enviar por WhatsApp (Próximamente)
-            </button>
-            <button class="w-full bg-gray-100 text-gray-400 p-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 cursor-not-allowed" disabled title="Próximamente">
-                ✉️ Enviar por Email (Próximamente)
-            </button>
-            <button onclick="goHome()" class="w-full mt-4 text-gray-500 hover:text-gray-800 font-bold py-2 underline">
-                Volver al inicio
-            </button>
+        <!-- VISTA 3: Resultados (Para Exportar) -->
+        <div id="view-results" class="p-6 sm:p-8 hidden">
+            <!-- Zona de exportación -->
+            <div id="export-zone" class="bg-white p-6 rounded-3xl border-2 border-[#a7e4e8]">
+                <div class="text-center mb-6">
+                    <img src="images/yaikooNB.png" alt="YAIKOO Face" class="h-20 mx-auto object-contain mb-4" onerror="this.src='https://placehold.co/100x100/a7e4e8/1a4c54?text=Y'">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Tu Reporte YAIKOO</h2>
+                    <p id="result-date" class="text-sm text-gray-500"></p>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-6 mb-6">
+                    <h3 id="result-category" class="font-bold text-[#1a4c54] uppercase tracking-wider text-sm mb-2">Categoría evaluada</h3>
+                    <div class="text-4xl font-extrabold text-[#1a4c54] mb-4" id="result-score">0/10</div>
+                    <div id="yaikoo-message" class="text-gray-700 text-lg leading-relaxed italic border-l-4 border-[#ffb6c1] pl-4">
+                        "Mensaje de YAIKOO"
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="mt-6 flex flex-col gap-2.5">
+                <button id="btn-download-pdf" onclick="downloadPDF(event)" class="w-full btn-pastel-blue p-3.5 rounded-xl font-bold text-base flex items-center justify-center gap-2 shadow-sm">
+                    📄 Descargar Resultados (PDF)
+                </button>
+                <button class="w-full bg-gray-100 text-gray-400 p-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 cursor-not-allowed" disabled title="Próximamente">
+                    💬 Enviar por WhatsApp (Próximamente)
+                </button>
+                <button class="w-full bg-gray-100 text-gray-400 p-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 cursor-not-allowed" disabled title="Próximamente">
+                    ✉️ Enviar por Email (Próximamente)
+                </button>
+                <button onclick="goHome()" class="w-full mt-4 text-gray-500 hover:text-gray-800 font-bold py-2 underline">
+                    Volver al inicio
+                </button>
+            </div>
         </div>
+
     </div>
 
-</div>
-
-<!-- Lógica de la aplicación -->
-<script>
-    // Base de datos de tests enfocados en jóvenes
-    const tests = {
-        ansiedad: {
-            title: "Ansiedad y Estrés",
-            questions: [
-                "¿Te has sentido muy nervioso/a, ansioso/a o con los nervios de punta recientemente?",
-                "¿Sientes que no puedes detener o controlar tus preocupaciones?",
-                "¿Te cuesta relajarte incluso cuando tienes tiempo libre?",
-                "¿Te sientes tan inquieto/a que es difícil quedarte quieto/a?",
-                "¿Sientes miedo de que algo terrible pueda pasar de repente?"
-            ]
-        },
-        depresion: {
-            title: "Ánimo y Depresión",
-            questions: [
-                "¿Has sentido poco interés o placer en hacer las cosas que antes te gustaban?",
-                "¿Te has sentido decaído/a, deprimido/a o sin esperanzas?",
-                "¿Sientes que estás muy cansado/a o con muy poca energía últimamente?",
-                "¿Sientes que has fallado o que has decepcionado a tu familia o a ti mismo/a?",
-                "¿Te resulta muy difícil concentrarte en cosas como leer o ver una serie?"
-            ]
-        },
-        digital: {
-            title: "Agotamiento Digital",
-            questions: [
-                "¿Te sientes mal contigo mismo/a después de ver la vida de otros en redes sociales?",
-                "¿Sientes la necesidad urgente de revisar tu celular constantemente, incluso si no suena?",
-                "¿Te has sentido abrumado/a o estresado/a por la cantidad de notificaciones que recibes?",
-                "¿Sientes miedo de 'quedarte fuera' (FOMO) si no estás conectado/a todo el tiempo?",
-                "¿Prefieres estar en tu celular que hablar con las personas que están contigo físicamente?"
-            ]
-        },
-        sueno: {
-            title: "Calidad del Sueño",
-            questions: [
-                "¿Te cuesta mucho trabajo quedarte dormido/a en las noches?",
-                "¿Te despiertas varias veces en la madrugada y te cuesta volver a dormir?",
-                "¿Sientes que, a pesar de dormir, te levantas cansado/a y sin energía?",
-                "¿El uso del celular en la cama retrasa tu hora de dormir más de lo planeado?",
-                "¿Sientes mucho sueño o te quedas dormido/a durante el día en clases o el trabajo?"
-            ]
-        },
-        aislamiento: {
-            title: "Conexión Social",
-            questions: [
-                "¿Te sientes aislado/a de los demás, incluso cuando estás rodeado de gente?",
-                "¿Sientes que nadie te conoce realmente o entiende por lo que pasas?",
-                "¿Evitas hacer planes sociales porque te sientes inseguro/a o sin energía?",
-                "¿Sientes que tus amistades actuales son superficiales o distantes?",
-                "¿Sientes que no tienes a quién recurrir si tienes un problema grave?"
-            ]
-        }
-    };
-
-    // Variables de estado
-    let currentCategory = '';
-    let currentQuestionIndex = 0;
-    let totalScore = 0;
-
-    // Elementos del DOM
-    const viewHome = document.getElementById('view-home');
-    const viewTest = document.getElementById('view-test');
-    const viewResults = document.getElementById('view-results');
-    const questionText = document.getElementById('question-text');
-    const testTitle = document.getElementById('test-title');
-    const progressBar = document.getElementById('progress-bar');
-
-    // Navegación
-    function showView(viewId) {
-        viewHome.classList.add('hidden');
-        viewTest.classList.add('hidden');
-        viewResults.classList.add('hidden');
-        document.getElementById(viewId).classList.remove('hidden');
-        document.getElementById(viewId).classList.add('fade-in');
-    }
-
-    function goHome() {
-        currentCategory = '';
-        currentQuestionIndex = 0;
-        totalScore = 0;
-        showView('view-home');
-    }
-
-    // Lógica del Test
-    function startTest(category) {
-        currentCategory = category;
-        currentQuestionIndex = 0;
-        totalScore = 0;
-        testTitle.innerText = tests[category].title;
-        loadQuestion();
-        showView('view-test');
-    }
-
-    function loadQuestion() {
-        const qArray = tests[currentCategory].questions;
-        questionText.innerText = qArray[currentQuestionIndex];
-        const progress = ((currentQuestionIndex) / qArray.length) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function answerQuestion(score) {
-        totalScore += score;
-        currentQuestionIndex++;
-        
-        if (currentQuestionIndex < tests[currentCategory].questions.length) {
-            // Actualizar barra y cargar siguiente
-            progressBar.style.width = `${(currentQuestionIndex / tests[currentCategory].questions.length) * 100}%`;
-            questionText.style.opacity = 0;
-            setTimeout(() => {
-                loadQuestion();
-                questionText.style.opacity = 1;
-            }, 200);
-        } else {
-            showResults();
-        }
-    }
-
-    // Lógica de Resultados y YAIKOO
-    function showResults() {
-        const maxScore = tests[currentCategory].questions.length * 2; // 5 preg * 2 = 10
-        
-        document.getElementById('result-category').innerText = `Test de ${tests[currentCategory].title}`;
-        document.getElementById('result-score').innerText = `${totalScore} / ${maxScore}`;
-        
-        const date = new Date();
-        document.getElementById('result-date').innerText = date.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-        // Generador de respuestas empáticas de YAIKOO
-        let msg = "";
-        if (totalScore <= 3) {
-            msg = "¡Qué bien! Noto que tus niveles están muy estables en esta área. Sigue cuidando de ti, estoy aquí para acompañarte siempre que quieras hablar.";
-        } else if (totalScore <= 6) {
-            msg = "He notado que traes algunas cargas en este momento. Es completamente normal tener días pesados. ¿Qué te parece si hoy hacemos algo relajante por ti? Yo te hago compañía.";
-        } else {
-            msg = "Percibo que estás pasando por un momento bastante difícil con esto. Quiero que sepas que tus sentimientos son válidos y no estás solo/a. A veces, la mejor forma de cuidar de nosotros es hablar con un profesional que nos guíe. Te abrazo fuerte.";
-        }
-        
-        document.getElementById('yaikoo-message').innerText = msg;
-        
-        progressBar.style.width = `100%`;
-        setTimeout(() => {
-            showView('view-results');
-        }, 300);
-    }
-
-    // Exportar a PDF Optimizado para Móviles
-    function downloadPDF(event) {
-        const btn = event.currentTarget;
-        const originalText = btn.innerHTML;
-        btn.innerHTML = "⏳ Generando PDF...";
-        btn.disabled = true;
-
-        const element = document.getElementById('export-zone');
-
-        // Opciones de configuración optimizadas para móviles
-        const opt = {
-            margin:       [10, 10, 10, 10], // top, left, bottom, right (mm)
-            filename:     `Reporte_YAIKOO_${currentCategory}.pdf`,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { 
-                scale: 2, 
-                useCORS: true,
-                allowTaint: true,
-                logging: false,
-                scrollX: 0,
-                scrollY: 0
+    <!-- Lógica de la aplicación -->
+    <script>
+        // Base de datos de tests enfocados en jóvenes
+        const tests = {
+            ansiedad: {
+                title: "Ansiedad y Estrés",
+                questions: [
+                    "¿Te has sentido muy nervioso/a, ansioso/a o con los nervios de punta recientemente?",
+                    "¿Sientes que no puedes detener o controlar tus preocupaciones?",
+                    "¿Te cuesta relajarte incluso cuando tienes tiempo libre?",
+                    "¿Te sientes tan inquieto/a que es difícil quedarte quieto/a?",
+                    "¿Sientes miedo de que algo terrible pueda pasar de repente?"
+                ]
             },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            depresion: {
+                title: "Ánimo y Depresión",
+                questions: [
+                    "¿Has sentido poco interés o placer en hacer las cosas que antes te gustaban?",
+                    "¿Te has sentido decaído/a, deprimido/a o sin esperanzas?",
+                    "¿Sientes que estás muy cansado/a o con muy poca energía últimamente?",
+                    "¿Sientes que has fallado o que has decepcionado a tu familia o a ti mismo/a?",
+                    "¿Te resulta muy difícil concentrarte en cosas como leer o ver una serie?"
+                ]
+            },
+            digital: {
+                title: "Agotamiento Digital",
+                questions: [
+                    "¿Te sientes mal contigo mismo/a después de ver la vida de otros en redes sociales?",
+                    "¿Sientes la necesidad urgente de revisar tu celular constantemente, incluso si no suena?",
+                    "¿Te has sentido abrumado/a o estresado/a por la cantidad de notificaciones que recibes?",
+                    "¿Sientes miedo de 'quedarte fuera' (FOMO) si no estás conectado/a todo el tiempo?",
+                    "¿Prefieres estar en tu celular que hablar con las personas que están contigo físicamente?"
+                ]
+            },
+            sueno: {
+                title: "Calidad del Sueño",
+                questions: [
+                    "¿Te cuesta mucho trabajo quedarte dormido/a en las noches?",
+                    "¿Te despiertas varias veces en la madrugada y te cuesta volver a dormir?",
+                    "¿Sientes que, a pesar de dormir, te levantas cansado/a y sin energía?",
+                    "¿El uso del celular en la cama retrasa tu hora de dormir más de lo planeado?",
+                    "¿Sientes mucho sueño o te quedas dormido/a durante el día en clases o el trabajo?"
+                ]
+            },
+            aislamiento: {
+                title: "Conexión Social",
+                questions: [
+                    "¿Te sientes aislado/a de los demás, incluso cuando estás rodeado de gente?",
+                    "¿Sientes que nadie te conoce realmente o entiende por lo que pasas?",
+                    "¿Evitas hacer planes sociales porque te sientes inseguro/a o sin energía?",
+                    "¿Sientes que tus amistades actuales son superficiales o distantes?",
+                    "¿Sientes que no tienes a quién recurrir si tienes un problema grave?"
+                ]
+            }
         };
 
-        // Pequeño retardo para asegurar procesamiento de canvas en navegadores móviles
-        setTimeout(() => {
-            html2pdf().set(opt).from(element).save().then(() => {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }).catch(err => {
-                console.error("Error al generar PDF:", err);
-                alert("No se pudo generar el PDF automáticamente. Puedes tomar una captura de pantalla a tu reporte.");
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            });
-        }, 300);
-    }
-</script>
+        // Variables de estado
+        let currentCategory = '';
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+
+        // Elementos del DOM
+        const viewHome = document.getElementById('view-home');
+        const viewTest = document.getElementById('view-test');
+        const viewResults = document.getElementById('view-results');
+        const questionText = document.getElementById('question-text');
+        const testTitle = document.getElementById('test-title');
+        const progressBar = document.getElementById('progress-bar');
+
+        // Navegación
+        function showView(viewId) {
+            viewHome.classList.add('hidden');
+            viewTest.classList.add('hidden');
+            viewResults.classList.add('hidden');
+            document.getElementById(viewId).classList.remove('hidden');
+            document.getElementById(viewId).classList.add('fade-in');
+        }
+
+        function goHome() {
+            currentCategory = '';
+            currentQuestionIndex = 0;
+            totalScore = 0;
+            showView('view-home');
+        }
+
+        // Lógica del Test
+        function startTest(category) {
+            currentCategory = category;
+            currentQuestionIndex = 0;
+            totalScore = 0;
+            testTitle.innerText = tests[category].title;
+            loadQuestion();
+            showView('view-test');
+        }
+
+        function loadQuestion() {
+            const qArray = tests[currentCategory].questions;
+            questionText.innerText = qArray[currentQuestionIndex];
+            const progress = ((currentQuestionIndex) / qArray.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function answerQuestion(score) {
+            totalScore += score;
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < tests[currentCategory].questions.length) {
+                // Actualizar barra y cargar siguiente
+                progressBar.style.width = `${(currentQuestionIndex / tests[currentCategory].questions.length) * 100}%`;
+                questionText.style.opacity = 0;
+                setTimeout(() => {
+                    loadQuestion();
+                    questionText.style.opacity = 1;
+                }, 200);
+            } else {
+                showResults();
+            }
+        }
+
+        // Lógica de Resultados y YAIKOO
+        function showResults() {
+            const maxScore = tests[currentCategory].questions.length * 2; // 5 preg * 2 = 10
+            
+            document.getElementById('result-category').innerText = `Test de ${tests[currentCategory].title}`;
+            document.getElementById('result-score').innerText = `${totalScore} / ${maxScore}`;
+            
+            const date = new Date();
+            document.getElementById('result-date').innerText = date.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            // Generador de respuestas empáticas de YAIKOO
+            let msg = "";
+            if (totalScore <= 3) {
+                msg = "¡Qué bien! Noto que tus niveles están muy estables en esta área. Sigue cuidando de ti, estoy aquí para acompañarte siempre que quieras hablar.";
+            } else if (totalScore <= 6) {
+                msg = "He notado que traes algunas cargas en este momento. Es completamente normal tener días pesados. ¿Qué te parece si hoy hacemos algo relajante por ti? Yo te hago compañía.";
+            } else {
+                msg = "Percibo que estás pasando por un momento bastante difícil con esto. Quiero que sepas que tus sentimientos son válidos y no estás solo/a. A veces, la mejor forma de cuidar de nosotros es hablar con un profesional que nos guíe. Te abrazo fuerte.";
+            }
+            
+            document.getElementById('yaikoo-message').innerText = msg;
+            
+            progressBar.style.width = `100%`;
+            setTimeout(() => {
+                showView('view-results');
+            }, 300);
+        }
+
+        // Exportar a PDF Optimizado para Móviles
+        function downloadPDF(event) {
+            const btn = event.currentTarget;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "⏳ Generando PDF...";
+            btn.disabled = true;
+
+            const element = document.getElementById('export-zone');
+
+            // Opciones de configuración optimizadas
+            const opt = {
+                margin:       [10, 10, 10, 10], // top, left, bottom, right (mm)
+                filename:     `Reporte_YAIKOO_${currentCategory}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { 
+                    scale: 2, 
+                    useCORS: true,
+                    allowTaint: true,
+                    logging: false,
+                    scrollX: 0,
+                    scrollY: 0
+                },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            setTimeout(() => {
+                html2pdf().set(opt).from(element).save().then(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }).catch(err => {
+                    console.error("Error al generar PDF:", err);
+                    alert("No se pudo generar el PDF automáticamente. Puedes tomar una captura de pantalla a tu reporte.");
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+            }, 300);
+        }
+    </script>
+</body>
 </html>
